@@ -1,56 +1,62 @@
 import React, { Component } from 'react';
-import './App.css';
-
+import theme from './theme';
 import {
   LandingCanvas,
-  MainTitleBrick,
   AppTitleBrick,
-  FeatureListBrick
-} from './landricks-components/src';
+  BannerBrick
+} from 'landricks-components';
 
 class App extends Component {
   render() {
     return (
-      <LandingCanvas>
+
+      <LandingCanvas theme={ theme }>
+
         <AppTitleBrick
-          title="It's time for Growing App!"
-          subtitle="A chat app to stay connected with other parents from your kid's class. All the information you need, neatly organized, just the way you like it"
-          screenshotUrl={require('./screenshot.jpg')}
-          bandStyle="A"
-        />
-        <FeatureListBrick
-          title="Features"
-          subtitle="to make your life simpled"
-          bandStyle="C"
-          features={[
-            { key: 1, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 2, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 3, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'}
+          title="Landricks Starter Kit"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
+          image={ require('../images/logo.svg') }
+          buttons={[
+            { label: 'Button 1', onClick: () => alert('Click in Button 1!') },
+            { label: 'Button 2', onClick: () => alert('Click in Button 2!') }
           ]}
         />
-        <FeatureListBrick
-          title="Features"
-          subtitle="to make your life simpled"
-          bandStyle="B"
-          features={[
-            { key: 1, icon: 'rocket', title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 2, icon: 'camera', title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 3, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 4, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 5, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 6, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 7, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'},
-            { key: 8, title: 'automatic contact', description: 'just select your school and grade and you will have access to the complete list of parents automatically'}
-          ]}
+
+        <AppTitleBrick
+          secondaryBrick
+          imageOnRight
+          title="Landricks Starter Kit"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
+          image={ require('../images/logo.svg') }
+          content={
+            <div>
+              <hr style={{ borderTop: '1px solid #747474', opacity: '.5' }} />
+              <h3 style={{ textAlign: 'right' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+            </div>
+          }
         />
-        <MainTitleBrick
-          title="It's time for Growing App!"
-          subtitle="A chat app to stay connected with other parents from your kid's class"
-          bandStyle="A"
-          cta={{ text: 'baja el app ios' }}
+
+        <BannerBrick
+          title="I'm a banner centered"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
         />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat mi in efficitur aliquet. Nam suscipit enim nec diam malesuada dignissim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non condimentum urna, sed convallis ex. Maecenas fermentum quis neque placerat commodo. Maecenas nec gravida tortor. Nunc lobortis facilisis turpis non dignissim. Suspendisse tincidunt tempor sagittis. Phasellus placerat odio eu turpis consectetur dignissim. Quisque in massa elit. Integer elementum lacinia arcu quis sodales.</p>
+
+        <BannerBrick
+          textOnLeft
+          secondaryBrick
+          title="I'm a banner with left align"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
+        />
+
+        <BannerBrick
+          textOnRight
+          title="I'm a banner with right align"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar lacinia tellus id fermentum. Nullam nunc est, congue suscipit posuere sit amet, hendrerit ac sapien. Nam commodo, nisi id rhoncus ultrices, arcu turpis eleifend arcu, a mollis elit ligula non ligula. "
+          bandStyle="ImageBanner"
+        />
+
       </LandingCanvas>
+
     );
   }
 }
