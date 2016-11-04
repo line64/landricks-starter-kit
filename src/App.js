@@ -22,10 +22,10 @@ class App extends Component {
           logo={ require('../images/logo.svg') }
           brand="Landricks Starter Kit"
           items={[
-            { label: "Item 1" },
-            { label: "Item 2" },
-            { label: "Item 3" },
-            { label: "Item Highlight", highlight: true }
+            { label: "Item 1", onClick: () => alert('Item 1') },
+            { label: "Item 2", onClick: () => alert('Item 2') },
+            { label: "Item 3", onClick: () => alert('Item 3') },
+            { label: "Item Highlight", highlight: true, onClick: () => alert('Item Highlight') }
           ]}
           bandStyle="Navigation"
         />
@@ -173,10 +173,10 @@ class App extends Component {
           title="Feature List Brick"
           subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           items={[
-            { text: "Item 1", icon: "clock-o" },
-            { text: "Item 2", icon: "check" },
-            { text: "Item 3", icon: "dashboard" },
-            { text: "Item 4", icon: "usd" }
+            { text: "Item 1", image: require('../images/logo.svg') },
+            { text: "Item 2", image: require('../images/logo.svg') },
+            { text: "Item 3", image: require('../images/logo.svg') },
+            { text: "Item 4", image: require('../images/logo.svg') }
           ]}
         />
 
