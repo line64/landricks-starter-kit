@@ -4,21 +4,31 @@ export default {
   defaultFontFamily: 'Open Sans, sans-serif',
   defaultFontSize: '70%',
 
+  bandStyleNavigation: {
+    backgroundColor: 'rgba(64, 81, 181, .95)'
+  },
+
+  bandStyleSecondary: {
+    backgroundColor: '#FAFAFA',
+    textColor: '#747474',
+  },
+
   bandStyleBigImage: {
-    contentStyle: {
-      background: '#32409F'
-    }
+    backgroundColor: '#32409F'
   },
 
   bandStyleBigVideo: {
-    contentStyle: {
-      background: '#32409F'
-    }
+    backgroundColor: '#32409F'
+  },
+
+  bandStyleSquiz: {
+    textColor: '#000'
   },
 
   bandStyleImageBanner: {
     contentStyle: {
-      background: `url(${ require('../images/background.jpg') }) center no-repeat`,
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover'
     },
     subtitleStyle: {
