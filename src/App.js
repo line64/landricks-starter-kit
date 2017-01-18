@@ -1,209 +1,190 @@
 import React, { Component } from 'react';
-import theme from './theme';
+import FontAwesome from 'react-fontawesome';
+import 'whatwg-fetch';
+
 import {
   LandingCanvas,
-  BigImageBrick,
-  TitleBrick,
-  CustomBrick,
-  BigVideoBrick,
-  NavigationBrick,
-  SquizMailBrick,
-  FeatureListBrick
+  ContextPropagator,
+  GenericBrick,
+  DoubleContentBrick,
+  StrongMessageBrick,
+  EnumerationBrick,
+  EmailSqueezeBrick,
+  CallToAction,
+  FeatureItem,
+  PlaceHolder,
+  
+  NavigationBrick
 } from 'landricks-components';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-
-      <LandingCanvas theme={ theme }>
-
+      <LandingCanvas>
         <NavigationBrick
+          theme={ HEADER_BAND_THEME }
           mode="FIXED"
-          logo={ require('../images/logo.svg') }
-          brand="Landricks Starter Kit"
-          items={[
-            { label: "Item 1", onClick: () => alert('Item 1') },
-            { label: "Item 2", onClick: () => alert('Item 2') },
-            { label: "Item 3", onClick: () => alert('Item 3') },
-            { label: "Item Highlight", highlight: true, onClick: () => alert('Item Highlight') }
-          ]}
-          bandStyle="Navigation"
+          brand="Landricks starter kit"
+          logo={ require('./images/logo-1.svg') }
+          contentStyle={{ padding: '1% 6.5%', textAlign: 'center' }}
+          logoStyle={{ height: '35px' }}
+          brandStyle={{ lineHeight: '32px', fontSize: '22px', marginLeft: '15px' }}
         />
 
-        <BigImageBrick
-          title="Landricks Starter Kit"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          image={ require('../images/logo.svg') }
-          buttons={[
-            { label: 'Button 1', onClick: () => alert('Click in Button 1!') },
-            { label: 'Button 2', onClick: () => alert('Click in Button 2!') }
-          ]}
+        <StrongMessageBrick
+          theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#0097a7", textColor: '#fff'}}
+          messageLevel1="A beautiful message, but not so long"
+          messageLevel2="A related but not so important concept, that usual…"
+          CTAs={<CallToAction label="sign up" />}
         />
 
-        <BigImageBrick
-          bandStyle="Secondary"
-          mode="IMAGE_ON_LEFT"
-          title="Landricks Starter Kit"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          image={ require('../images/logo.svg') }
-          content={
-            <div>
-              <hr style={{ borderTop: '1px solid #747474', opacity: '.5' }} />
-              <h3 style={{ textAlign: 'right' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-            </div>
-          }
-        />
+        <GenericBrick
+          theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#FAFAFA"}}
+          title="Yes, we can!"
+          subtitle="if you think you can do it"
+          contentStyle={{textAlign: "center"}}>
+        <PlaceHolder/>
+        </GenericBrick>
 
-        <BigImageBrick
-          mode="IMAGE_ON_BOTTOM"
-          title="Landricks Starter Kit"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          image={ require('../images/logo.svg') }
-          buttons={[
-            { label: 'Button 1', onClick: () => alert('Click in Button 1!') },
-            { label: 'Button 2', onClick: () => alert('Click in Button 2!') }
-          ]}
-          bandStyle="BigImage"
-        />
+        <EnumerationBrick theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#4db6ac"}} title="Awesome features" subtitle="You can add any number of them">
+          <FeatureItem icon="rocket" title="Feature 1" description="bla bla bla bla bla" />
+          <FeatureItem icon="rocket" title="Feature 2" description="bla bla bla bla bla" />
+          <FeatureItem icon="rocket" title="Feature 3" description="bla bla bla bla bla" />
+        </EnumerationBrick>
 
-        <TitleBrick
-          title="I'm a banner centered"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-        />
-
-        <TitleBrick
-          mode="TEXT_ON_LEFT"
-          bandStyle="Secondary"
-          title="I'm a banner with left align"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-        />
-
-        <TitleBrick
-          mode="TEXT_ON_RIGHT"
-          title="I'm a banner with right align"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar lacinia tellus id fermentum. Nullam nunc est, congue suscipit posuere sit amet, hendrerit ac sapien. Nam commodo, nisi id rhoncus ultrices, arcu turpis eleifend arcu, a mollis elit ligula non ligula. "
-          bandStyle="ImageBanner"
-          contentStyle={{ backgroundImage: `url(${require('../images/background.jpg')})` }}
-        />
-
-        <CustomBrick
-          title="I'm a custom brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar lacinia tellus id fermentum. Nullam nunc est, congue suscipit posuere sit amet, hendrerit ac sapien. Nam commodo, nisi id rhoncus ultrices, arcu turpis eleifend arcu, a mollis elit ligula non ligula. "
-        >
-          <div>
-            <img src={ require('../images/logo.svg') } height="150" style={{ position: 'relative', top: '-100px' }} alt="presentation" />
-            <img src={ require('../images/logo.svg') } height="250" alt="presentation" />
-            <img src={ require('../images/logo.svg') } height="150" style={{ position: 'relative', top: '-100px' }} alt="presentation" />
+        <GenericBrick
+          theme={ LIGHT_BAND_THEME }
+          title="How to use it"
+          subtitle="Learn how to create your own brick web"
+          contentStyle={ {textAlign: 'center'} }
+          titleStyle={{ fontSize: '1.75em' }}
+          subtitleStyle={{ fontSize: '1.25em' }}>
+          <div style={{ textAlign: 'center' }}>
+            <h3>This is a GenericBrick</h3>
           </div>
-        </CustomBrick>
+        </GenericBrick>
 
-        <BigVideoBrick
-          title="Big Video"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          videoUrl="https://s3-us-west-2.amazonaws.com/coverr/mp4/Blurry-Lights.mp4"
-          buttons={[
-            { label: 'Button 1', onClick: () => alert('Click in Button 1!') },
-            { label: 'Button 2', onClick: () => alert('Click in Button 2!') }
-          ]}
-          bandStyle="BigVideo"
+        <EnumerationBrick
+          theme={ HEAVY_BAND_THEME }
+          title="Enumeration Brick"
+          titleStyle={{ fontSize: '1.75em', marginBottom: '5%' }}>
+          <FeatureItem
+            icon="clock-o"
+            title="ITEM 1"
+            wrapperStyle={{ padding: '4% 2%', borderBottom: '.25em solid #00838f' }}
+            iconStyle={{ fontSize: '4em' }}
+            titleStyle={{ marginTop: '6%', fontSize: '1.2em' }}
+          />
+          <FeatureItem
+            icon="gears"
+            title="ITEM 2"
+            wrapperStyle={{ padding: '4% 2%', borderBottom: '.25em solid #00838f' }}
+            iconStyle={{ fontSize: '4em' }}
+            titleStyle={{ marginTop: '6%', fontSize: '1.2em' }}
+          />
+          <FeatureItem
+            icon="thumbs-up"
+            title="ITEM 3"
+            wrapperStyle={{ padding: '4% 2%', borderBottom: '.25em solid #00838f' }}
+            iconStyle={{ fontSize: '4em' }}
+            titleStyle={{ marginTop: '6%', fontSize: '1.2em' }}
+          />
+        </EnumerationBrick>
+
+        <DoubleContentBrick theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#eceff1"}} hasHeader={false}>
+          <PlaceHolder useLoremIpsum />
+          <PlaceHolder label="image placeholder" />
+        </DoubleContentBrick>
+
+        <DoubleContentBrick theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#cfd8dc"}} hasHeader={false}>
+          <PlaceHolder label="image placeholder" />
+          <PlaceHolder useLoremIpsum />
+        </DoubleContentBrick>
+
+        <DoubleContentBrick theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#eceff1"}} hasHeader={false}>
+          <PlaceHolder useLoremIpsum />
+          <PlaceHolder label="image placeholder" />
+        </DoubleContentBrick>
+
+        <EmailSqueezeBrick
+          title="Join our Newsletter"
+          subtitle="To get updates about what we want you to know abou…"
+          theme={{fontFamily: "Lato", baseFontSize: "18px", backgroundColor: "#4db6ac"}}
+          buttonLabel="Join"
+          placeholder="Enter your email"
         />
 
-        <BigVideoBrick
-          bandStyle="Secondary"
-          mode="VIDEO_ON_LEFT"
-          title="Big Video"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          videoUrl="https://s3-us-west-2.amazonaws.com/coverr/mp4/Blurry-Lights.mp4"
-          content={
-            <div style={{ textAlign: 'right' }}>
-              <img src={ require('../images/logo.svg') } height="100" style={{ position: 'relative', top: '-80px' }} alt="presentation" />
-              <img src={ require('../images/logo.svg') } height="200" alt="presentation" />
-              <img src={ require('../images/logo.svg') } height="100" style={{ position: 'relative', top: '-80px' }} alt="presentation" />
-              <img src={ require('../images/logo.svg') } height="200" alt="presentation" />
-              <img src={ require('../images/logo.svg') } height="100" style={{ position: 'relative', top: '-80px' }} alt="presentation" />
-            </div>
-          }
-        />
-
-        <BigVideoBrick
-          mode="VIDEO_ON_BOTTOM"
-          title="Big Video"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus eros non libero ultricies, non mollis ex molestie. Nulla facilisi. Fusce enim purus, ultricies id venenatis id, lobortis at enim."
-          videoUrl="https://s3-us-west-2.amazonaws.com/coverr/mp4/Blurry-Lights.mp4"
-          buttons={[
-            { label: 'Button 1', onClick: () => alert('Click in Button 1!') },
-            { label: 'Button 2', onClick: () => alert('Click in Button 2!') }
-          ]}
-        />
-
-        <SquizMailBrick
-          title="Squiz Mail Brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          placeholder="Your Email"
-          buttonLabel="Submit"
-          smallText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          onSubmit={ (data) => alert(data.email) }
-          bandStyle="Secondary"
-          buttonStyle={{ color: '#FFF' }}
-          inputStyle={{ borderColor: '#E91C63' }}
-        />
-
-        <SquizMailBrick
-          title="Squiz Mail Brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          placeholder="Your Email"
-          buttonLabel="Submit"
-          smallText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          onSubmit={ (data) => alert(data.email) }
-        />
-
-        <SquizMailBrick
-          title="Squiz Mail Brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          placeholder=""
-          buttonLabel="Subscribe"
-          smallText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          onSubmit={ (data) => alert(data.email) }
-          bandStyle="Squiz"
-          contentStyle={{ backgroundImage: `url(${require('../images/background-white.jpg')})` }}
-          buttonStyle={{ color: '#FFF', backgroundColor: '#000' }}
-        />
-
-        <FeatureListBrick
-          title="Feature List Brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          items={[
-            { text: "Item 1", image: require('../images/logo.svg') },
-            { text: "Item 2", image: require('../images/logo.svg') },
-            { text: "Item 3", image: require('../images/logo.svg') },
-            { text: "Item 4", image: require('../images/logo.svg') }
-          ]}
-        />
-
-        <FeatureListBrick
-          title="Feature List Brick"
-          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          items={[
-            { text: "Item 1", icon: "clock-o" },
-            { text: "Item 2", icon: "check" },
-            { text: "Item 3", icon: "dashboard" },
-            { text: "Item 4", icon: "usd" }
-          ]}
-          bandStyle="Secondary"
-          itemStyle={{
-            color: '#E91C63',
-            backgroundColor: 'rgba(233, 28, 99, .15)',
-            borderRadius: '50%',
-            width: '180px',
-            height: '170px',
-            paddingTop: '80px'
-          }}
-        />
 
       </LandingCanvas>
-
     );
   }
 }
+
+const BASE_THEME = {
+  fontFamily: 'Open Sans',
+  baseFontSize: '18px'
+}
+
+const HEADER_BAND_THEME = {
+  ...BASE_THEME,
+  baseFontSize: '18px',
+  backgroundColor: '#3D4351',
+  textColor: '#FFFFFF',
+  primaryColor: '#FFFFFF',
+  primaryContrastColor: '#8BC34A',
+  objectDesign: 'square-solid'
+}
+
+const HEAVY_BAND_THEME = {
+  ...BASE_THEME,
+  backgroundColor: '#4db6ac',
+  textColor: '#FFFFFF',
+  primaryColor: '#0097a7',
+  primaryContrastColor: '#FFFFFF',
+  secondaryColor: '#8D1042',
+  objectDesign: 'square-solid'
+};
+
+const LIGHT_BAND_THEME = {
+  ...BASE_THEME,
+  backgroundColor: '#eceff1',
+  textColor: '#3D4351',
+  primaryColor: '#8BC34A',
+  secondaryColor: '#3D4351',
+  padding: 0
+};
+
+const FOOTER_BAND_THEME = {
+  ...BASE_THEME,
+  backgroundColor: '#3D4351',
+  textColor: '#fff',
+  primaryColor: '#8BC34A',
+  fontSize: '1.2rem',
+  secondaryColor: '#3D4351',
+  padding: 0
+};
+const GALLERY_BAND_THEME = {
+  ...BASE_THEME,
+  backgroundColor: '#607d8b',
+  textColor: '#fff',
+  primaryColor: '#607d8b',
+  fontSize: '1.2rem',
+  secondaryColor: '#3D4351',
+  padding: 0,
+  indicatorColor: '#4db6ac',
+  controlsColor: '#0288d1',
+  // backgroundImage : require('./images/5.jpg')
+};
+
+const Gallery_Item = {
+  flex : '1',
+  // maxHeight: '50vh',
+  width: '100%', 
+  margin: '20px'
+};
 
 export default App;
